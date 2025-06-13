@@ -26,15 +26,15 @@
   <img id="dynamicImage" alt="Loading image..." />
 
   <script>
-    // Get query parameter ?imageUrl=
     const params = new URLSearchParams(window.location.search);
-    const imageUrl = params.get("imageUrl");
+    const key = params.get("key");
 
-    // If imageUrl exists, set it as the source of the image tag
-    if (imageUrl) {
+    if (key) {
+      // Construct Firebase image URL dynamically
+      const imageUrl = `https://firebasestorage.googleapis.com/v0/b/qr-card-ff7bc.firebasestorage.app/o/UserBusinessCard%2F${key}%2F${key}_mainCard.png?alt=media&token=fe045246-87e1-4116-bd25-2c6f730b7945`;
       document.getElementById("dynamicImage").src = imageUrl;
     } else {
-      document.body.innerHTML = "<h2 style='color:white;'>No imageUrl provided</h2>";
+      document.body.innerHTML = "<h2 style='color:white;'>No key provided</h2>";
     }
   </script>
 </body>
