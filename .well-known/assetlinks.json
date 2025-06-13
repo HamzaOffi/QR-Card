@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.aique.qrcard",
+    "sha256_cert_fingerprints":
+    ["8B:4A:B2:6F:2F:DF:37:D2:B1:14:47:27:1F:ED:FD:AE:07:24:4A:EA",
+"D1:63:BB:BB:FA:74:2F:49:60:95:F1:F8:B7:B4:8B:27:1E:35:74:C1:95:99:48:E0:BF:79:BE:71:F6:6A:89:90"]
+  }
+}]
