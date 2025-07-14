@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>💳 Payment Failed</title>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      background: #f8f9fa;
+      padding-top: 60px;
+    }
+    .message-box {
+      padding: 45px;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+      max-width: 400px;
+      text-align: center;
+      background: #fff;
+      border-bottom: 4px solid red;
+    }
+    .message-box i {
+      font-size: 55px;
+      color: red;
+      margin-bottom: 15px;
+    }
+    .message-box h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    .message-box p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #555;
+    }
+    .btn-retry {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="message-box">
+    <i class="fa fa-times-circle" aria-hidden="true"></i>
+    <h2>Your Payment Failed</h2>
+    <p>Unfortunately, we couldn't process your payment. Please try again.</p>
+    <button class="btn btn-danger btn-retry" onclick="window.history.back()">
+      Retry Payment
+    </button>
+  </div>
+</body>
+</html>
