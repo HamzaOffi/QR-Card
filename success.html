@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thank You!</title>
+  <style>
+    body { font-family: Arial; padding: 2rem; max-width: 600px; margin: auto; }
+    .summary { background: #f9f9f9; padding: 1rem; margin-top: 1rem; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h1>🎉 Thank you for your purchase!</h1>
+  <p>Your transaction was successful.</p>
+
+  <div id="details" class="summary">
+    <p><em>Loading purchase details…</em></p>
+  </div>
+
+  <script>
+    async function loadSession() {
+      const params = new URLSearchParams(window.location.search);
+      const sessionId = params.get('checkout_id');
+      if (!sessionId) {
+        document.getElementById('details').innerHTML = '<p style="color: red;">No session ID found in the URL.</p>';
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/fetch-checkout?checkout_id=${encodeURIComponent(sessionId)}`);
+        if (!res.ok) throw new Error('Failed to fetch session');
+        const data = await res.json();
+
+        document.getElementById('details').innerHTML = `
+          <p><strong>Checkout ID:</strong> ${data.id}</p>
+          <p><strong>Status:</strong> ${data.status}</p>
+          <p><strong>Amount:</strong> ${(+data.total_amount/100).toFixed(2)} ${data.currency.toUpperCase()}</p>
+          <p><strong>Email:</strong> ${data.customer_email}</p>
+        `;
+      } catch (err) {
+        document.getElementById('details').innerHTML =
+          `<p style="color: red;">Error: ${err.message}</p>`;
+      }
+    }
+
+    loadSession();
+  </script>
+</body>
+</html>
